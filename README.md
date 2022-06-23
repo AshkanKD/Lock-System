@@ -1,6 +1,6 @@
 # Demmy's Locking Resource
 
-`demmylock` is a door locking resource for [FiveM](https://fivem.net/), and is entirely useless without a `cfx-server` running and a `FiveM` client connected to that server.
+`Lock-System` is a door locking resource for [FiveM](https://fivem.net/), and is entirely useless without a `cfx-server` running and a `FiveM` client connected to that server.
 
 ## Assumptions
 
@@ -16,12 +16,12 @@ Feel free to submit pull requests (including against the documentation!) if you 
 
 All definitions, file formats and procedures are **subject to change without notice**. This documentation is **without any guarantees of accuracy**, and the package as a whole **comes with no warranty, and is not to be considered fit for any perticular purpose**. See [the license](LICENSE.md) for the legaleese version of this babble.
 
-## Why create DemmyLock?
+## Why create Lock-System?
 
-`demmylock` was created from an idea that all the different door lock scripts are all very dependant on their frameworks, and are generally very aesthetically displeasing.
+`Lock-System` was created from an idea that all the different door lock scripts are all very dependant on their frameworks, and are generally very aesthetically displeasing.
 What I set out to do here, was to make it ever so slightly prettier, by not depending on floating 3D text, and to make it completely independant from any framework.
 
-In `demmylock` it doesn't matter what "job" you have. This script has no idea.  
+In `Lock-System` it doesn't matter what "job" you have. This script has no idea.  
 It cares about one thing, and one thing only: _Do you know the code?_
 
 To visualize the lock, two components are used.
@@ -30,7 +30,7 @@ To visualize the lock, two components are used.
 
 The marker is overlayed over the prop to show the *state* of the lock. More on that in the [Lock states](#lock-states) section. When you approach the lock, you get a so-called helptext in the upper left corner, and if you press the right button you will be shown a keypad. The keypad graphics are based on a screenshot of the prop used.
 
-Also, performance. After a bit of tinkering I'm confident that `demmylock` outperforms all other publically released general-purpose door locking resource. If it doesn't, please point this out to me, and I'll head over to it to get schooled.
+Also, performance. After a bit of tinkering I'm confident that `Lock-System` outperforms all other publically released general-purpose door locking resource. If it doesn't, please point this out to me, and I'll head over to it to get schooled.
 
 ## What do the buttons do?
 
@@ -140,17 +140,17 @@ The `doors` bit is a list of doors. A door has three properties.
 | coords     | vector3 | The coordinates of the door. |
 | keeploaded | Boolean | See the [Gates behave strangely](#gates-behave-strangely) section |
 
-Using this information, `demmylock` can determine exactly what door you mean, and freeze it when it's locked. Note that it's possible to specify several doors per lock, meaning you operate both doors in a double-door together, if you want.
+Using this information, `Lock-System` can determine exactly what door you mean, and freeze it when it's locked. Note that it's possible to specify several doors per lock, meaning you operate both doors in a double-door together, if you want.
 
-While `demmylock` makes no effort to stop you from putting the same door under multiple locks, it is not recommended that you do so. It can lead to undesired effects unless you do it very carefully.
+While `Lock-System` makes no effort to stop you from putting the same door under multiple locks, it is not recommended that you do so. It can lead to undesired effects unless you do it very carefully.
 
-The `keypads` bit is telling `demmylock` where you want the keypads that lock and unlock this lock. The example shows a `static keypad`, which means it doesn't move at all. Static keypads have *two* properties.
+The `keypads` bit is telling `Lock-System` where you want the keypads that lock and unlock this lock. The example shows a `static keypad`, which means it doesn't move at all. Static keypads have *two* properties.
 | Property | Type    | What it means                           |
 |----------|---------|-----------------------------------------|
 | coords   | vector3 | The exact location to place the keypad. |
 | rot      | vector3 | The exact rotation you want the keypad to have, **in rotation order 2**. |
 
-`demmylock` will figure out where to put the state indicator on it's own, based on this information. Note that as with doors, you can place multiple keypads. Typically you want one on each side of the door, but if you want 73 keypads, `demmylock` will let you squander all the resources you want.
+`Lock-System` will figure out where to put the state indicator on it's own, based on this information. Note that as with doors, you can place multiple keypads. Typically you want one on each side of the door, but if you want 73 keypads, `Lock-System` will let you squander all the resources you want.
 
 ### Keypads on the actual doors
 
@@ -225,7 +225,7 @@ AddLocks('Example',{
 
 ### Gates behave strangely
 
-Some gates, specifically the ones that are set to react to an approaching vehicle at pretty dramatic distances, do not play well with the loading and unloading of doors that `demmylock` does. When such a gate is behaving stragely, you have to tell `demmylock` to just keep it loaded rather than unloading it to make room for more doors.
+Some gates, specifically the ones that are set to react to an approaching vehicle at pretty dramatic distances, do not play well with the loading and unloading of doors that `Lock-System` does. When such a gate is behaving stragely, you have to tell `Lock-System` to just keep it loaded rather than unloading it to make room for more doors.
 
 This is done by adding `keeploaded=true` to the door definition, like so:
 
@@ -288,9 +288,9 @@ Let's have a look at the `teleport` section:
 
 Because teleporters are most often used to go to interior locations, and we don't want users to fall through the void, you can specify an optional interior to load before moving the player.
 
-**Note:** If the specified `ipl` is invalid, it'll be stuck loading for ever, breaking `demmylock` for whomever tries to teleport, so be sure to test this properly!
+**Note:** If the specified `ipl` is invalid, it'll be stuck loading for ever, breaking `Lock-System` for whomever tries to teleport, so be sure to test this properly!
 
-`demmylock` makes no attempt at loading interior props or setting interior colors or anything of the sort when teleporting. This is not a "MILO manager" resource *at all*, and will only do the most rudementary of checks. If the teleporter leads to somewhere that is loaded automatically, you can just omit the `ipl` here.
+`Lock-System` makes no attempt at loading interior props or setting interior colors or anything of the sort when teleporting. This is not a "MILO manager" resource *at all*, and will only do the most rudementary of checks. If the teleporter leads to somewhere that is loaded automatically, you can just omit the `ipl` here.
 
 After entering the correct code, **anyone** can step through the teleporter by just strolling up to the keypad and pressing *E*. This is intentional, as it enables you to bring people with you through the teleporter *withot telling them the code*, just like when you unlock a regular door.
 

@@ -1,6 +1,6 @@
-name 'DemmyLock'
+name 'Lock-System'
 description 'Less buggy door locking!'
-author 'Demonen'
+author 'AshkanKD'
 
 fx_version 'adamant'
 games { 'gta5' }

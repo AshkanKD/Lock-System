@@ -93,9 +93,6 @@ In [the configuration file](config.lua), you can mess around with a few settings
 
 ## Defining locks
 
-The actual lock definition is really fiddly. I mean, surprisingly fiddly and complicated.  
-I highly recommend using some kind of tool to aid you in this. Personally, I make my own tools, so for this I use [DemmyCam](https://github.com/DemmyDemon/demmycam) to do this. I've built "modes" into it that greatly simplifies this work.
-
 Lock definition is done in [the locks directory](locks/place_lock_files_here.md).
 
 ### Overall structure
